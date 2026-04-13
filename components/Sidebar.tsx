@@ -1,14 +1,17 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Users, CalendarCheck, CreditCard, Store, Star, LogOut } from 'lucide-react';
+import { LayoutDashboard, Users, CalendarCheck, CreditCard, Store, LogOut, BarChart2, CalendarX, IndianRupee } from 'lucide-react';
 
 const NAV = [
-  { href: '/dashboard',              icon: <LayoutDashboard size={18} />, label: 'Overview' },
-  { href: '/dashboard/users',        icon: <Users size={18} />,           label: 'Users' },
-  { href: '/dashboard/bookings',     icon: <CalendarCheck size={18} />,   label: 'Bookings' },
-  { href: '/dashboard/subscriptions',icon: <CreditCard size={18} />,      label: 'Subscriptions' },
-  { href: '/dashboard/salons',       icon: <Store size={18} />,           label: 'Salons' },
+  { href: '/dashboard',               icon: <LayoutDashboard size={18} />, label: 'Overview' },
+  { href: '/dashboard/users',         icon: <Users size={18} />,           label: 'Users' },
+  { href: '/dashboard/bookings',      icon: <CalendarCheck size={18} />,   label: 'Bookings' },
+  { href: '/dashboard/subscriptions', icon: <CreditCard size={18} />,      label: 'Subscriptions' },
+  { href: '/dashboard/salons',        icon: <Store size={18} />,           label: 'Salons' },
+  { href: '/dashboard/kpis',          icon: <BarChart2 size={18} />,       label: 'KPI Health' },
+  { href: '/dashboard/no-shows',      icon: <CalendarX size={18} />,       label: 'No-Shows' },
+  { href: '/dashboard/earnings',      icon: <IndianRupee size={18} />,     label: 'Earnings' },
 ];
 
 export default function Sidebar() {
