@@ -11,10 +11,28 @@ interface Sub {
   users: { name: string | null; phone: string } | null;
 }
 
+const PLAN_LABEL: Record<string, string> = {
+  'groom-basic':    'Groom Basic',
+  'groom-plus':     'Groom Plus',
+  'groom-elite':    'Groom Elite',
+  'beauty-basic':   'Beauty Basic',
+  'beauty-plus':    'Beauty Plus',
+  'beauty-elite':   'Beauty Elite',
+  'relax':          'Relax',
+  'wellness-elite': 'Wellness Elite',
+  'couple':         'SERAIQ Couple',
+};
+
 const PLAN_STYLE: Record<string, string> = {
-  elite:   'bg-gold/20 text-gold',
-  premium: 'bg-blue-500/20 text-blue-400',
-  basic:   'bg-white/10 text-white/60',
+  'groom-elite':    'bg-gold/20 text-gold',
+  'beauty-elite':   'bg-gold/20 text-gold',
+  'wellness-elite': 'bg-gold/20 text-gold',
+  'couple':         'bg-gold/20 text-gold',
+  'groom-plus':     'bg-blue-500/20 text-blue-400',
+  'beauty-plus':    'bg-blue-500/20 text-blue-400',
+  'groom-basic':    'bg-white/10 text-white/60',
+  'beauty-basic':   'bg-white/10 text-white/60',
+  'relax':          'bg-purple-500/20 text-purple-400',
 };
 const STATUS_STYLE: Record<string, string> = {
   active:    'bg-green-500/20 text-green-400',
@@ -70,8 +88,8 @@ export default function SubscriptionsPage() {
                   <p className="text-white/40 text-[10px] font-mono">{s.users?.phone}</p>
                 </td>
                 <td className="px-4 py-3">
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold capitalize ${PLAN_STYLE[s.plan_type] ?? 'bg-white/10 text-white/50'}`}>
-                    {s.plan_type}
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${PLAN_STYLE[s.plan_type] ?? 'bg-white/10 text-white/50'}`}>
+                    {PLAN_LABEL[s.plan_type] ?? s.plan_type}
                   </span>
                 </td>
                 <td className="px-4 py-3">
