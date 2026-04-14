@@ -11,12 +11,20 @@ interface Booking {
   salons: { name: string } | null;
 }
 
-const STATUS_OPTS = ['', 'pending', 'confirmed', 'completed', 'cancelled'];
+const STATUS_OPTS = ['', 'pending', 'confirmed', 'completed', 'cancelled', 'no_show'];
+const STATUS_LABEL: Record<string, string> = {
+  pending:   'Pending',
+  confirmed: 'Confirmed',
+  completed: 'Completed',
+  cancelled: 'Cancelled',
+  no_show:   'No Show',
+};
 const STATUS_STYLE: Record<string, string> = {
-  confirmed:  'bg-blue-500/20 text-blue-400',
-  completed:  'bg-green-500/20 text-green-400',
-  cancelled:  'bg-red-500/20 text-red-400',
-  pending:    'bg-yellow-500/20 text-yellow-400',
+  confirmed: 'bg-blue-500/20 text-blue-400',
+  completed: 'bg-green-500/20 text-green-400',
+  cancelled: 'bg-red-500/20 text-red-400',
+  pending:   'bg-yellow-500/20 text-yellow-400',
+  no_show:   'bg-orange-500/20 text-orange-400',
 };
 
 export default function BookingsPage() {
@@ -52,7 +60,7 @@ export default function BookingsPage() {
           className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm text-white focus:outline-none focus:border-gold"
         >
           {STATUS_OPTS.map((s) => (
-            <option key={s} value={s} className="bg-navy">{s === '' ? 'All Status' : s.charAt(0).toUpperCase() + s.slice(1)}</option>
+            <option key={s} value={s} className="bg-navy">{s === '' ? 'All Status' : (STATUS_LABEL[s] ?? s)}</option>
           ))}
         </select>
       </div>
@@ -82,8 +90,8 @@ export default function BookingsPage() {
                 <td className="px-4 py-3 text-white/60 text-xs">{String(b.booking_time ?? '').slice(0,5)}</td>
                 <td className="px-4 py-3 text-white/60 text-xs capitalize">{b.service_type}</td>
                 <td className="px-4 py-3">
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold capitalize ${STATUS_STYLE[b.status] ?? 'bg-white/10 text-white/50'}`}>
-                    {b.status}
+                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${STATUS_STYLE[b.status] ?? 'bg-white/10 text-white/50'}`}>
+                    {STATUS_LABEL[b.status] ?? b.status}
                   </span>
                 </td>
                 <td className="px-4 py-3 text-white/40 text-xs">
