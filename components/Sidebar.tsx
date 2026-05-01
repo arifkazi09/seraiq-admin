@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, Users, CalendarCheck, CreditCard, Store, LogOut, BarChart2, CalendarX, IndianRupee } from 'lucide-react';
+import { LayoutDashboard, Users, CalendarCheck, CreditCard, Store, LogOut, BarChart2, CalendarX, IndianRupee, UserPlus } from 'lucide-react';
 
 const NAV = [
   { href: '/dashboard',               icon: <LayoutDashboard size={18} />, label: 'Overview' },
@@ -12,6 +12,7 @@ const NAV = [
   { href: '/dashboard/kpis',          icon: <BarChart2 size={18} />,       label: 'KPI Health' },
   { href: '/dashboard/no-shows',      icon: <CalendarX size={18} />,       label: 'No-Shows' },
   { href: '/dashboard/earnings',      icon: <IndianRupee size={18} />,     label: 'Earnings' },
+  { href: '/dashboard/leads',         icon: <UserPlus size={18} />,        label: 'Leads' },
 ];
 
 export default function Sidebar() {
